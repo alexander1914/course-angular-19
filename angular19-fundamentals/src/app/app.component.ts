@@ -8,5 +8,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'Angular Fundamentals 19v';
+
+  onLogoClick() {
+    alert('Welcome new version angualar 19v')
+  }
+
+  onKeyUp(newTitle: string) {
+    this.title = newTitle;
+  }
 }
