@@ -5,11 +5,14 @@
         <div class="course-title">
             {{ course.description }}
         </div>
+        <br>
         <img width="300" alt="Angular Logo" [src]="course.iconUrl">
 
         <div class="course-description">
             {{ course.longDescription }}
         </div>
+        <br>
+        <button (click)="onCourseViewed()">View Course</button>
 
     </div>
 
