@@ -14,6 +14,8 @@ export class AppComponent {
 
   title = 'Angular Fundamentals 19v';
 
+  courses = [...COURSES];
+
   coreCourse = COURSES[0];
 
   rxjsCourse = COURSES[1];

@@ -12,6 +12,11 @@ export class CourseCardComponent {
   @Input({
     required: true
   })
+  index!: number;
+
+  @Input({
+    required: true
+  })
   course!: Course;
 
   @Output('courseSelected')

@@ -38,11 +38,20 @@
 </main>
 
 <div class="courses">
-  <app-course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></app-course-card>
 
-  <app-course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></app-course-card>
+  @for(course of courses; track course.id;
+  let index = $index; let count = $count;
+  let first = $first; let last = $last;
+  let even = $even; let odd = $odd) {
 
-  <app-course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></app-course-card>
+  <app-course-card [course]="course" [index]="index" [class.is-first]="first" [class.is-last]="last"
+    [class.is-even]="even" [class.is-odd]="odd" (courseSelected)="onCourseSelected($event)"></app-course-card>
+  }
+
+  @empty {
+  <h1>No Elements found ...</h1>
+  }
+
 </div>
 
 <router-outlet />
