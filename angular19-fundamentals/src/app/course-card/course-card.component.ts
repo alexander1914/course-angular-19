@@ -19,6 +19,9 @@ export class CourseCardComponent {
   })
   course!: Course;
 
+  @Input()
+  cardIndex!: number;
+
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
 
@@ -27,10 +30,20 @@ export class CourseCardComponent {
   ngOnInit(): void {
   }
 
+  isImageVisible() {
+    return this.course && this.course.iconUrl;
+  }
+
   onCourseViewed() {
     console.log("card component - button clicked...");
 
     this.courseEmitter.emit(this.course);
+  }
+
+  cardClasses() {
+    return {
+      'beginner': this.course.category == 'BEGINNER'
+    };
   }
 
 }

@@ -52,6 +52,13 @@
   <h1>No Elements found ...</h1>
   }
 
+  <!-- Another a way NGFOR
+    <app-course-card *ngFor="let course of courses;index as i;first as isFirst;last as isLast"
+    [class.is-first]="isFirst"
+    [class.is-last]="isLast"
+    (courseSelected)="onCourseSelected($event)"
+    [course]="course"></app-course-card> -->
+
 </div>
 
 <router-outlet />

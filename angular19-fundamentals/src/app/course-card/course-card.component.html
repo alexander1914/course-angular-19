@@ -1,12 +1,21 @@
 <div class="courses">
-
     <div class="course-card">
 
         <div class="course-title">
             {{index}} {{ course.description }}
         </div>
+
+        @if(course.id == 1){
+        <h2>Course with ID 1 detected!</h2>
+        }
+
+        @if (isImageVisible()) {
         <br>
         <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+        }
+        @else {
+        <p>No image available now..</p>
+        }
 
         <div class="course-description">
             {{ course.longDescription }}
@@ -15,5 +24,4 @@
         <button (click)="onCourseViewed()">View Course</button>
 
     </div>
-
 </div>

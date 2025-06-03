@@ -7,3 +7,6 @@ Present day, I'm currently learning more about new angular version 19 and featur
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
 </p>
 
+# Migrate control flow syntax to update ngIF and etc.
+    ng generate @angular/core:control-flow
+

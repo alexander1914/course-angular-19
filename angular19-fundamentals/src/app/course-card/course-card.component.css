@@ -59,3 +59,7 @@
 .course-card.is-odd {
     background: lightcyan;
 }
+
+.course-card-beginner {
+    background: lightsalmon;
+}
