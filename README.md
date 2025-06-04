@@ -10,3 +10,9 @@ Present day, I'm currently learning more about new angular version 19 and featur
 # Migrate control flow syntax to update ngIF and etc.
     ng generate @angular/core:control-flow
 
+# Feature on Angular 19
+
+**control-flow:** we can use @if, @else if, @else to validation now
+**Pipes:** are a special operator in Angular template expressions that allows you to transform data declaratively in your template
+
+

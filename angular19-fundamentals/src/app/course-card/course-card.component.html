@@ -1,8 +1,25 @@
 <div class="courses">
-    <div class="course-card">
+    <div class="course-card" [style]="titleStyle()">
 
         <div class="course-title">
-            {{index}} {{ course.description }}
+            {{index}} {{ course.description.toUpperCase() }}
+        </div>
+
+        <div class="course-category">
+            @switch (course.category) {
+            @case ("BEGINNER") {
+            <div class="category">Beginner</div>
+            }
+            @case ("INTERMEDIATE") {
+            <div class="category">Intermediate</div>
+            }
+            @case ("ADVANCED") {
+            <div class="category">Advanced</div>
+            }
+            @default {
+            <div class="category">Unknown</div>
+            }
+            }
         </div>
 
         @if(course.id == 1){

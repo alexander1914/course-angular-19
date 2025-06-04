@@ -46,4 +46,10 @@ export class CourseCardComponent {
     };
   }
 
+  titleStyle() {
+    return {
+      'text- decoration': 'underline',
+    };
+  }
+
 }

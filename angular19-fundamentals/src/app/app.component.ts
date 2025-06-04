@@ -22,6 +22,10 @@ export class AppComponent {
 
   ngrxCourse = COURSES[2];
 
+  startDate = new Date(2000, 0, 1);
+
+  titleCard = COURSES[0].description;
+
   onLogoClick() {
     alert('Welcome new version angualar 19v')
   }
