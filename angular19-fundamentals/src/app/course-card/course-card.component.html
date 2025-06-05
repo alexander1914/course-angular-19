@@ -28,7 +28,7 @@
 
         @if (isImageVisible()) {
         <br>
-        <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+        <app-course-image [scr]="course.iconUrl"></app-course-image>
         }
         @else {
         <p>No image available now..</p>
@@ -37,6 +37,7 @@
         <div class="course-description">
             {{ course.longDescription }}
         </div>
+
         <br>
         <button (click)="onCourseViewed()">View Course</button>
 

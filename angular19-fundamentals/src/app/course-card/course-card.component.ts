@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Course } from '../model/course';
+import { CourseImageComponent } from "../course-image/course-image.component";
 
 @Component({
   selector: 'app-course-card',
-  imports: [],
+  imports: [CourseImageComponent],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })

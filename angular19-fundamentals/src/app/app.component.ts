@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CourseCardComponent } from "./course-card/course-card.component";
 import { COURSES } from './db-data';
 import { Course } from './model/course';
+import { CourseImageComponent } from './course-image/course-image.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Course } from './model/course';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, AfterContentInit {
 
   title = 'Angular Fundamentals 19v';
 
@@ -26,6 +27,28 @@ export class AppComponent {
 
   titleCard = COURSES[0].description;
 
+  @ViewChild('cardRef')
+  card!: CourseCardComponent;
+
+  @ViewChildren(CourseCardComponent)
+  cards: QueryList<Course> | undefined;
+
+  @ContentChild(CourseImageComponent)
+  images!: QueryList<CourseImageComponent>;
+
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit" + this.card);
+    console.log("ngAfterViewInit" + this.cards);
+    console.log(this.cards?.changes.subscribe(
+      cards => console.log(cards)
+
+    ));
+  }
+
+  ngAfterContentInit(): void {
+    console.log(this.images);
+  }
+
   onLogoClick() {
     alert('Welcome new version angualar 19v')
   }
@@ -35,10 +58,11 @@ export class AppComponent {
   }
 
   onCourseSelected(course: Course) {
-    console.log("App component - click event bubbled...", course);
+    console.log(this.card);
   }
 
   trackCourse(index: number, course: Course) {
     return course.id;
   }
+
 }
