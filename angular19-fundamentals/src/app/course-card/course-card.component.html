@@ -26,12 +26,17 @@
         <h2>Course with ID 1 detected!</h2>
         }
 
+        <ng-content #blackImage></ng-content>
+
         @if (isImageVisible()) {
         <br>
         <app-course-image [scr]="course.iconUrl"></app-course-image>
         }
         @else {
-        <p>No image available now..</p>
+        <ng-template #blackImage>
+            <p style="color: red;">No image available now..</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500" />
+        </ng-template>
         }
 
         <div class="course-description">
