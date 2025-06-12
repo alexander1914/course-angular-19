@@ -25,3 +25,10 @@ Query results are represented as a signal of a read-only collection containing a
 **ContentChild**:Initializes a content child query. 
 Consider using contentChild.required for queries that should always match.
 
+**Directives**:
+
+    ng generate directive directives/highlighted
+
+_@HostBinding_: Angular automatically checks host bindings during change detection, and if a binding changes it updates the host element of the directive.
+_@HostListener_: Angular invokes the supplied handler method when the host element emits the specified event, and updates the bound element with the result.
+
