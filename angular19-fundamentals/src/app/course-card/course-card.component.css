@@ -1,3 +1,11 @@
+:host {
+    display: block;
+}
+
+:host-context(.salmon-theme) .course-card {
+    background: lightsalmon;
+}
+
 .top-menu {
     background: #1976d2;
     padding: 2px 15px;
@@ -12,7 +20,7 @@
     margin: 50px auto;
 }
 
-.course-card {
+.salmon-them.course-card.course-card {
     display: block;
 
 }
@@ -42,21 +50,21 @@
     border-radius: 4px;
 }
 
-.course-card.is-first {
+.host.is-first {
     border-top: 2px solid grey;
     padding-top: 20px;
 }
 
-.course-card.is-last {
+.host.is-last {
     border-bottom: 2px solid grey;
     padding-top: 20px;
 }
 
-.course-card.is-even {
+.host.is-even {
     background: lightgray;
 }
 
-.course-card.is-odd {
+.host.is-odd {
     background: lightcyan;
 }
 

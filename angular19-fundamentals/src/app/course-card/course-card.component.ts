@@ -1,4 +1,4 @@
-import { Component, ContentChild, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Course } from '../model/course';
 import { CourseImageComponent } from "../course-image/course-image.component";
 
@@ -6,7 +6,8 @@ import { CourseImageComponent } from "../course-image/course-image.component";
   selector: 'app-course-card',
   imports: [CourseImageComponent],
   templateUrl: './course-card.component.html',
-  styleUrl: './course-card.component.css'
+  styleUrl: './course-card.component.css',
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class CourseCardComponent {
 
