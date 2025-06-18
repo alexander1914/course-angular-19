@@ -5,6 +5,7 @@ import { COURSES } from './db-data';
 import { Course } from './model/course';
 import { CourseImageComponent } from './course-image/course-image.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,21 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
 
   @ContentChild(CourseImageComponent)
   images!: QueryList<CourseImageComponent>;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    const params = new HttpParams()
+      .set("page", "1")
+      .set("pageSize", 10)
+    this.http.get('/api/courses', { params })
+      .subscribe(
+        val => console.log(val)
+      );
+
+  }
 
   ngAfterViewInit(): void {
     console.log("ngAfterViewInit" + this.card);

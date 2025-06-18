@@ -25,11 +25,13 @@ Query results are represented as a signal of a read-only collection containing a
 _ContentChild_: Initializes a content child query. 
 Consider using contentChild.required for queries that should always match.
 
-**Directives**:Angular directives offer a great way to encapsulate reusable behaviors— directives can apply attributes, CSS classes, and event listeners to an element.
+**Directives**: Angular directives offer a great way to encapsulate reusable behaviors— directives can apply attributes, CSS classes, and event listeners to an element.
 
     ng generate directive directives/highlighted
 
 _@HostBinding_: Angular automatically checks host bindings during change detection, and if a binding changes it updates the host element of the directive.
 
 _@HostListener_: Angular invokes the supplied handler method when the host element emits the specified event, and updates the bound element with the result.
+
+**Service**: provide a way for you to separate Angular app data and functions that can be used by multiple components in your app.
 
