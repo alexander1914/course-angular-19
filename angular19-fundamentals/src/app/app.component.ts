@@ -6,10 +6,12 @@ import { Course } from './model/course';
 import { CourseImageComponent } from './course-image/course-image.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CourseCardComponent, HighlightedDirective],
+  imports: [RouterOutlet, CourseCardComponent, HighlightedDirective, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -38,6 +40,8 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
   @ContentChild(CourseImageComponent)
   images!: QueryList<CourseImageComponent>;
 
+  courses$!: Observable<Course[]>;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -46,11 +50,8 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
     const params = new HttpParams()
       .set("page", "1")
       .set("pageSize", 10)
-    this.http.get('/api/courses', { params })
-      .subscribe(
-        val => console.log(val)
-      );
 
+    this.courses$ = this.http.get<Course[]>('/api/courses', { params });
   }
 
   ngAfterViewInit(): void {
