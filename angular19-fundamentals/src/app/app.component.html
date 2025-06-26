@@ -54,8 +54,7 @@
   let even = $even; let odd = $odd) {
 
   <app-course-card #cardRef [course]="course" [index]="index" [class.is-first]="first" [class.is-last]="last"
-    [class.is-even]="even" [class.is-odd]="odd" (courseSelected)="onCourseSelected($event)" [highlighted]="true"
-    #highlighter="hl">
+    [class.is-even]="even" [class.is-odd]="odd" [highlighted]="true" #highlighter="hl" (courseChanged)="save($event)">
 
     <h5>Lessons: 5</h5>
   </app-course-card>

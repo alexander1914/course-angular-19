@@ -24,7 +24,7 @@ export class CourseCardComponent {
   @Input()
   cardIndex!: number;
 
-  @Output('courseSelected')
+  @Output('courseChanged')
   courseEmitter = new EventEmitter<Course>();
 
   constructor() { }
@@ -52,6 +52,10 @@ export class CourseCardComponent {
     return {
       'text- decoration': 'underline',
     };
+  }
+
+  onSaveClicked(description: string) {
+    this.courseEmitter.emit({ ...this.course, description })
   }
 
 }

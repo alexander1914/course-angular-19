@@ -8,6 +8,7 @@ import { HighlightedDirective } from './directives/highlighted.directive';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { CoursesService } from './services/courses.service';
 
 @Component({
   selector: 'app-root',
@@ -42,16 +43,16 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
 
   courses$!: Observable<Course[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private coursesService: CoursesService) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    const params = new HttpParams()
-      .set("page", "1")
-      .set("pageSize", 10)
+    console.log(this.coursesService);
 
-    this.courses$ = this.http.get<Course[]>('/api/courses', { params });
+    this.courses$ = this.coursesService.loadCourses();
+    console.log(this.courses$);
+
   }
 
   ngAfterViewInit(): void {
@@ -85,6 +86,13 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
 
   onToggle(ishighlighted: boolean) {
     console.log(ishighlighted);
+  }
+
+  save(course: Course) {
+    this.coursesService.saveCourse(course)
+      .subscribe(
+        () => console.log("Course saved ...")
+      );
   }
 
 }

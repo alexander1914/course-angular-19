@@ -40,11 +40,12 @@
         }
 
         <div class="course-description">
-            {{ course.longDescription }}
+            Edit Title: <input #courseTitle [value]="course.description">
         </div>
 
         <br>
-        <button (click)="onCourseViewed()">View Course</button>
+        <button (click)="onCourseViewed()">View Course</button>&nbsp;
+        <button (click)="onSaveClicked(courseTitle.value)">Save Course</button>
 
     </div>
 </div>

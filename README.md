@@ -35,3 +35,5 @@ _@HostListener_: Angular invokes the supplied handler method when the host eleme
 
 **Service**: provide a way for you to separate Angular app data and functions that can be used by multiple components in your app.
 
+_@Injectable_: Decorator that marks a class as available to be provided and injected as a dependency.
+
