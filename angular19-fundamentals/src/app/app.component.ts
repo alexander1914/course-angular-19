@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, Inject, InjectionToken, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CourseCardComponent } from "./course-card/course-card.component";
 import { COURSES } from './db-data';
@@ -10,11 +10,24 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CoursesService } from './services/courses.service';
 
+function coursesServiceProvider(http: HttpClient): CoursesService {
+  return new CoursesService(http);
+}
+
+export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE')
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CourseCardComponent, HighlightedDirective, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [
+    {
+      provide: COURSES_SERVICE,
+      useFactory: coursesServiceProvider,
+      deps: [HttpClient]
+    }
+  ]
 })
 export class AppComponent implements AfterViewInit, AfterContentInit {
 
@@ -43,7 +56,7 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
 
   courses$!: Observable<Course[]>;
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(@Inject(COURSES_SERVICE) private coursesService: CoursesService) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
