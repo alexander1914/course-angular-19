@@ -5,16 +5,9 @@ import { COURSES } from './db-data';
 import { Course } from './model/course';
 import { CourseImageComponent } from './course-image/course-image.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CoursesService } from './services/courses.service';
-
-function coursesServiceProvider(http: HttpClient): CoursesService {
-  return new CoursesService(http);
-}
-
-export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE')
 
 @Component({
   selector: 'app-root',
@@ -22,11 +15,7 @@ export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVI
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [
-    {
-      provide: COURSES_SERVICE,
-      useFactory: coursesServiceProvider,
-      deps: [HttpClient]
-    }
+    CoursesService
   ]
 })
 export class AppComponent implements AfterViewInit, AfterContentInit {
@@ -56,12 +45,15 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
 
   courses$!: Observable<Course[]>;
 
-  constructor(@Inject(COURSES_SERVICE) private coursesService: CoursesService) { }
+  constructor(
+    private coursesService: CoursesService) {
+    console.log("Root component " + this.coursesService.id);
+  }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    console.log(this.coursesService);
+    console.log("coursesService course card" + this.coursesService.id);
 
     this.courses$ = this.coursesService.loadCourses();
     console.log(this.courses$);
