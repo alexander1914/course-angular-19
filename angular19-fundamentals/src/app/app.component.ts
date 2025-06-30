@@ -8,15 +8,13 @@ import { HighlightedDirective } from './directives/highlighted.directive';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CoursesService } from './services/courses.service';
+import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CourseCardComponent, HighlightedDirective, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [
-    CoursesService
-  ]
+  styleUrl: './app.component.css'
 })
 export class AppComponent implements AfterViewInit, AfterContentInit {
 
@@ -46,8 +44,11 @@ export class AppComponent implements AfterViewInit, AfterContentInit {
   courses$!: Observable<Course[]>;
 
   constructor(
-    private coursesService: CoursesService) {
+    private coursesService: CoursesService,
+    @Inject(CONFIG_TOKEN) private config: AppConfig) {
+
     console.log("Root component " + this.coursesService.id);
+    console.log(config);
   }
 
   ngOnInit(): void {

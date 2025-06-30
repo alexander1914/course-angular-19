@@ -37,3 +37,5 @@ _@HostListener_: Angular invokes the supplied handler method when the host eleme
 
 _@Injectable_: Decorator that marks a class as available to be provided and injected as a dependency.
 
+_@Inject_: Parameter decorator on a dependency parameter of a class constructor that specifies a custom provider of the dependency.
+
