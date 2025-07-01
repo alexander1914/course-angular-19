@@ -39,3 +39,10 @@ _@Injectable_: Decorator that marks a class as available to be provided and inje
 
 _@Inject_: Parameter decorator on a dependency parameter of a class constructor that specifies a custom provider of the dependency.
 
+_@Optional_: Parameter decorator to be used on constructor parameters, which marks the parameter as being an optional dependency. The DI framework provides null if the dependency is not found.
+
+_SkipSelf()_: Parameter decorator to be used on constructor parameters, which tells the DI framework to start dependency resolution from the parent injector. Resolution works upward through the injector hierarchy, so the local injector is not checked for a provider.
+
+_@Self_: Parameter decorator to be used on constructor parameters, which tells the DI framework to start dependency resolution from the local injector.
+
+_Host_: Parameter decorator on a view-provider parameter of a class constructor that tells the DI framework to resolve the view by checking injectors of child elements, and stop when reaching the host element of the current component.
